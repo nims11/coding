@@ -1,0 +1,48 @@
+/*
+    Nimesh Ghelani (nims11)
+*/
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+#include<algorithm>
+#include<map>
+#include<string>
+#include<vector>
+#include<queue>
+#include<cmath>
+#include<stack>
+#include<set>
+#include<utility>
+#define in_T int t;for(scanf("%d",&t);t--;)
+#define in_I(a) scanf("%d",&a)
+#define in_F(a) scanf("%lf",&a)
+#define in_L(a) scanf("%lld",&a)
+#define in_S(a) scanf("%s",a)
+#define newline printf("\n")
+#define MAX(a,b) a>b?a:b
+#define MIN(a,b) a<b?a:b
+#define SWAP(a,b) {int tmp=a;a=b;b=tmp;}
+#define P_I(a) printf("%d",a)
+
+using namespace std;
+int k, n;
+int key_status[201], chest_stat[201], rem, opened_by[201];
+vector<int> inside[201];
+int main()
+{
+    int c =0;
+    in_T
+    {
+        c++;
+        cin>>k>>n;
+        rem = n;
+        int x,y;
+        for(int i=0;i<201;i++)
+            key_status[i] = chest_stat[i]  = 0, inside[i].clear();
+        for(int i=0;i<k;i++)
+        {
+            in_I(x);
+            key[x]++;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+* Circular Permutation of n things taken r at a time = P(n, r)/r (clock+anticlock)
+* selection of n distinct objects taken r at a time with repetition = C(n+r-1, r)
+* no of ways to divide n distinct objects into r unequal groups of size a1, a2,...
+	= n!/(a1!a2!..)
+* divide m.n distinct objects equally into n groups = (mn)!/(m!^n)n!
+* Multinomial
+x1+x2+...+xm = n, a1<=x1<=b1, a2<=x2<=b2,...
+number of solutions = coefficient of x^n in
+(x^a1+...+x^b1)(x^a2+...+x^b2)...
+coefficient of x^r in (1-x)^-n = C(n+r-1, r)

@@ -1,0 +1,15 @@
+* General Question
+N people in a circle. Every kth person shot. Find the remaining person
+
+* k=2
+f(2j) = 2f(j)-1  # even
+f(2j+1) = 2f(j)+1  # odd
+
+if n = 2^m + l, 0 <= l < 2^m, then f(n) = 2*l + 1
+
+
+* General K
+
+g(n,k) = (g(n-1, f(k)) + k) % n, g(0,k) = 0
+
+f(k) determines how k changes in each round.

@@ -1,0 +1,56 @@
+Binary Indexed/Fenwick Tree
+
+O(n) space
+O(lgn) update and query time
+
+* Basic Idea
+Each number can be represented as a sum of distinct powers of 2
+eg 14 = 8+4+2
+same way, each cumulative frequency can be represented by sum of non overlapping sub frequencies
+
+* Algo(1-based indexing)
+
+# (idx & -idx) isolates the rightmost set bit
+def update(idx, n, val):
+	while idx<=n:
+		BIT[idx]+=val
+		idx += (idx & -idx)
+
+def query(idx, n):
+	ret = 0
+	while idx>0:
+		ret += BIT[idx]
+		idx -= (idx & -idx)
+	return ret
+
+
+* Advanced Understanding:  http://cs.stackexchange.com/questions/10538/bit-what-is-the-intuition-behind-a-binary-indexed-tree-and-how-was-it-thought-a 
+* A useful technique for converting a problem involving numbers into a BIT problem is to map the numbers (say n numbers) to 1..n and then represent them in a BIT.
+
+
+* 2d BIT
+BIT[][] = {{0}}
+
+updatey(x,y,val):
+	while y<=n:
+		BIT[x][y] += val
+		y += (y & -y)
+
+updatex(x,y,val):
+	while x<=n:
+		updatey(x,y,val)
+		x += (x & -x)
+
+query_y(x, y):
+	ans = 0
+	while y>0:
+		ans += BIT[x][y]
+		y -= (y & -y)
+	return ans
+
+query(x, y):
+	ans = 0
+	while x>0:
+		ans += query_y(x, y)
+		x -= (x & -x)
+	return ans

@@ -1,0 +1,6 @@
+
+ln(n!) = n*ln(n) - n + O(ln(n))
+
+n! ~ sqrt(2*pi*n)*(n/e)^n
+
+* length of the factorial by taking log base 10 on both sides

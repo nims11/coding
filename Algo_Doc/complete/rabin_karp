@@ -1,0 +1,24 @@
+Rabin Karp Algorithm
+
+eg. Finding a string X of length 'm' in string S of length 'n'
+
+Let the string derive its characters from a set of 'd' characters (eg, d=26 for lowercase character string).
+Index all the characters from 0 to 'd'. Now, each string can be represented as a base-d number. And this base-d representation is unique to a string. 
+Since this representation can be a really big number, it is better to represent it as equivalent to some number (mod q), where 'q' is a prime number bigger than 'd'.
+
+Calculate this representation for the substring of length 'm' in O(m) time.
+hash_X = 0
+for i in range(m):
+	hash_X = ( hash_X*d + idx(X[i]) )%p
+
+Similarly find the hash for S[0..m-1] in O(m)
+It is simple to compute hash for S[1..m] in O(1) using the previous value. Thus, all candidate substring's hash can be calculated in O(n).
+hash(S[i..i+m-1]) = ( d*( hash( S[i-1..i+m-2] - idx(S[i-1])*h ) ) + idx(S[i+m-1]) ) % p
+
+Matching can now be done in O(n), by comparing each hash of substrings of S with that of X. If it is equal, "most likely" we have found a match.
+
+
+Problems where Rabin Karp may be used
+- Finding Longest Common Prefix of two strings. (Compute prefix hash array for both strings and perform binary search).
+- Finding Number of palindromic substrings of length k in a string. (Compare hash(S, i, i+k-1) and hash(S, i+k-1, i) (reverse) )
+- Finding Minimum Number of appends to make a string palindrome.

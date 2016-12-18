@@ -1,0 +1,55 @@
+* GCD
+
+GCD(a, b):
+	while b>0:
+		a, b = b, a%b
+	return a
+
+* LCM(a,b)*GCD(a,b) = a*b
+
+* Euler Totient Function
+ - phi(n) = number of k (1<=k<=n) such that GCD(k,n) = 1
+ - Multiplicative, i.e. if GCD(m,n) = 1, then phi(mn) = phi(m)*phi(n)
+ - phi(n) = n*(1-1/p1)*(1-1/p2)....   p1,p2, ... -> distinct primes dividing n
+ - phi(p^k) = p^k - p^(k-1)
+ - phi(d1)+phi(d2)+.... = n   d1,d2,... -> positive divisors of n
+ - if a and n are coprime, then a^phi(n) = 1 (mod n)
+ - b%a = 0  implies  phi(b)%phi(a) = 0
+ - n divides phi(a^n - 1)  (a, n > 1)
+ - phi(mn) = phi(m)*phi(n)*d/phi(d)    d = gcd(m,n)
+	- phi(2m) = (m is even? 2: 1)*phi(m)
+	- phi(n^m) = n^(m-1)*phi(n)
+ - phi(LCM(a,b))*phi(GCD(a,b)) = phi(a)*phi(b)
+ - for n>=3, phi(n) is even
+ - if n has r distinct odd prime factors, then 2^r divides phi(n)
+
+
+* Prime Generation (DP)
+
+primes = [2]
+isPrime(n):
+	return 0 if n == 1
+	for i = 0..len-1, primes[i]<=sqrt(n):
+		return false if n%primes[i] == 0
+	return true
+
+genPrime(n):
+	for i = 3..n, i+=2:
+		if isPrimes(i): primes.append(i)
+
+
+* Fermat's Little Theorem
+if m = n (mod p-1),	p->prime
+	m = b(p-1)+n
+	a^m = a^(b(p-1)) . a^n = 1^b . a^n = a^n (mod n)
+
+a^p = a (mod p) , p->prime
+
+a^(p-1) = 1 (mod p),	p and a -> coprime
+
+
+* Euler Theorem
+
+a^ETF(n) = 1 (mod n)
+
+

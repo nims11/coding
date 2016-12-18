@@ -1,0 +1,41 @@
+Tries
+Tree like data structure for storing strings.
+Each node has number of children equal to the size of domain of characters used. (eg. 26 if only lowercase letters are used)
+A walk from the root to the leaf traverses a whole string (Note: string which are prefix of another string donot fall into this category).
+Searching in O(M) (M->length of the string to be searched)
+
+struct node
+{
+    // 0 - new
+    // 1 - end
+    // 2 - not end
+    int status;
+    node* kids[26];
+}nodes[MAX];
+int cnt = 0;
+char str[100];
+void insert(node *curr, int idx)
+{
+    // Inserts str to the trie
+    if(!str[idx])
+    {
+        curr->status = 1;
+        return;
+    }
+    if(curr->kids[str[idx]-'a'])
+    {
+        insert(curr->kids[str[idx]-'a'], idx+1);
+    }else
+    {
+        if(curr->status == 0)
+            curr->status = 2;
+        for(int i=0;i<26;i++)
+            nodes[cnt].kids[i] = 0, nodes[cnt].status = 0;
+        curr->kids[str[idx]-'a'] = &nodes[cnt];
+        cnt++;
+        insert(curr->kids[str[idx]-'a'], idx+1);
+    }
+}
+
+
+Searching is just a DFS.

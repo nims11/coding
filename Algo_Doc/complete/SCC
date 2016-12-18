@@ -1,0 +1,46 @@
+* Strongly connected components
+
+SCC of a directed graph is the connected subgraph of a graph in which all nodes are reachable from each other.
+If each SCC is just a single vertex, then the graph is a directed acyclic graph.
+
+* Tarjan's Algorithm
+
+TARJAN_SCC:
+	G = (V,E)
+	S = stack()
+	index = 0
+	for v in V:
+		if v.index not defined:
+			strongconnect(v)
+
+strongconnect(v):
+	v.index = v.lowlink = index++
+	S.push(v)
+
+	# Considering each successors of v
+	for (v,w) in E
+		if w.index not defined:
+			strongconnect(w)
+			v.lowlink = min(v.lowlink, w.lowlink)
+		else if w in S
+			v.lowlink = min(v.lowlink, w.index)
+		
+	# If v is root node
+	if v.lowlink == v.index:
+		x = new SCC
+		do:
+			W = S.pop()
+			add W to X
+		while W!=v
+
+
+- Single DFS
+- v.index = dfs time of the node v
+- v.lowlink = smallest index of node reachable from that node
+- root node = first node of an SCC encountered during DFS. When a node is identified as a root node, all stack elts till the root node are a part of a SCC
+
+
+* Examples
+- To find sinks in a graph, i.e. if node v has paths to another node w, there is also a path from w to v.
+	Find SCCs with out-order = 0
+

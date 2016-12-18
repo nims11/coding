@@ -1,0 +1,19 @@
+Spanning Tree of a given graph is the connected sub graph which consists of all vertices and minimum number of edges. Thus, it is a tree. Minimum Spanning Tree is one such sub graph having minimum weight of all paths.
+
+*Kruskal Algo
+
+Greedy Algo, keep selecting edges from a sorted list according to its weight, creating and joining disjoint sets of sub trees, making sure no edge connects the vertices of the same set
+
+ans = []
+for V in G:
+	make_set(V)  // Creates set consisting of a particular Node
+
+for E in G:	//Selecting Edges
+	if set(E.u) != set(E.v):	// if both vertices at end of the edge belong to different sets
+		ans.append(E)
+		join_set(set(E.u), set(E.v))
+
+
+*Prims Algo
+
+Greedy, Starting from a vertice, keep expanding that set by selecting adjacent edges to the present vertices of the set, making sure the tree property is maintained.

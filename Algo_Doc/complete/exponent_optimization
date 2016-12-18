@@ -1,0 +1,41 @@
+Calculating r^n
+
+Naive Method: O(n)
+
+Efficient Method: O(lgn)
+
+Idea:
+Not repeating the same calculation. eg. 2^4
+naive approach - ((2*2)*2)*2 = 2^4  (3 operations)
+Efficient Approach - 2^4 = (2*2)*(2*2) = (2*2)^2   (2 operations, 1->2*2, 2->4*4)
+
+Algo:
+
+pow(r,n):
+	ans = 1
+	while n>0:
+		if n is odd:
+			ans *= r
+		n /= 2
+		r = r*r
+	return ans
+
+
+* Solving Linear Recurrences using Matrix Exponential Method
+eg.
+f(n+1) = a*f(n) + b*f(n-1)
+
+Let M be a matrix such that
+M*| f(n)  | = | f(n+1) |
+  | f(n-1)|   |  f(n)  |
+
+f(x) can be any other function or a constant
+
+M = | a  b |
+    | 1  1 |
+
+M*M*| f(n)  | = M*| f(n+1) | = | f(n+2) |
+    | f(n-1)|     |  f(n)  |   | f(n+1) |
+
+M^k * |  f(n) | = |  f(n+k) |
+      | f(n-1)|   | f(n+k-1)|

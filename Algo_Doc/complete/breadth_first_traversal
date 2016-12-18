@@ -1,0 +1,10 @@
+Nearest nodes are expanded first
+
+enqueue(src)
+while queue_is_not_empty:
+	tmp = dequeue()
+	for unvisited neighbors of tmp:
+		enqueue(neigh)
+
+- High Space complexity
+- Use when solution lie closer to the starting point

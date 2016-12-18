@@ -1,0 +1,25 @@
+* Point dividing line joining P(x1, y1,..) and Q(x2, y2,..)
+	- (mx2+nx1/(m+n), ...)
+* direction cosine -> unit vector along the line
+	l^2+m^2+n^2 = 1
+* cos(angle bet 2 lines) = (a1a2+b1b2+c1c2)/(sqrt(a1^2+b1^2+c1^2)sqrt(a2^2+b2^2+c2^2))
+* sin is 0 when l1/l2 = m1/m2 = n1/n2
+* Projection of line seg joining P(x1,y1,z1) and Q(x2,..)
+  on a line(l,m,n) is l(x2-x1)+m(y2-y1)+n(z2-z1)
+* perpendicular dist of a point P(x,y,z) from a line passing through A(a,b,c) and
+  (l,m,n). AN = projection, PN = sqrt(AP^2-AN^2)
+* ar(x) = 1/2((y1,z1,1),(y2,z2,1)..). area^2 = ar(x)^2 + ar(y)^2 + ar(z)^2
+* eq of plane -> ax+by+cz+d = 0
+  normal form -> lx+my+nz = p, p is length of normal from origin to plane, l,m,n is DC of normal
+  plane passing through P(x1,y1,z1) and perpendicular to line (l,m,n) is l(x-x1)+m(y-y1)+...=0
+  plane passng though three nin-collinear pts |(x-x1,y-y1,z-z1),(x2-x1,y2-y1,...| = 0
+  intercept form -> x/a+y/b+z/c = 1
+* perpendicular dist of point to plane = mod((ax1+by1+cz1+d)/sqrt(a^2+b^2+c^2))
+* bisector planes
+  plane1/sqrt(a1^2+..) = +- plane2/sqrt(a2^2..)
+
+* Line
+(x-x1)/l = (y-y1)/m = (z-z1)/n
+2 point-> replace l with (x2-x1) and so on
+shortest dist bet 2 lines
+|(x2-x1,y2-y1,z2-z1),(l1,m1,n1),(l2,m2,n2)|/sqrt((l1m2-m1l2)^2+(m1n2-n1m2)^2+(l1n2-l2n1)^2)

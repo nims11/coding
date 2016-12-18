@@ -1,0 +1,18 @@
+lg(n) time search on sorted list
+
+// Finds lower bound
+binary_search(n, arr):
+	start = 0, end = len(arr)-1
+	while start<end:
+		mid = (start+end)/2
+		if arr[mid]<n:
+			start = mid+1
+		else:
+			end = mid
+	return start
+
+
+Binary Search in searching solution, where to use?
+
+- Usually for optimal solution search
+- When verifying a solution has lower complexity

@@ -1,0 +1,22 @@
+In this form of traversal, the deepest node of a graph is retrieved first followed by tracing backwards. The algo is described as
+
+
+// initially visited[x] = 0
+
+DFS(node):
+	visited[node] = True
+	for i in node.neighbors():
+		if not visited[i]:
+		DFS(i)
+	print node.id
+
+
+for V in G:
+	if not visited[V]:
+		DFS(V)
+
+
+
+Some Properties of DFS
+- During DFS, if no back edges (edges connecting a vertex to its ancestor) is found, then the graph is acyclic
+- low space complexity

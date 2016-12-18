@@ -1,0 +1,108 @@
+SEGMENT TREE
+
+Data structure using binary tree with O(lg(n)) update and query. Usually represents an array.
+
+Concept: Each node of the tree represents a range with some info related to that range. This info might be anything that may help in efficient query and update. For each node representing a range, it may have two children representing left half subrange and right half subrange. For a Segment tree, the root of the tree represents the whole array, while the leafs represent a single element. All other nodes represent some subarray. The tree is a balanced tree.
+
+3 Major operation
+
+* BUILD - Initialises the tree according to the initial data.
+
+- Psuedo Code
+
+# TREE[1...4n] = the segment tree
+# arr[1...n] = the array represented by the TREE
+# start with build(1, 0, n-1)
+
+build(node, a, b):
+	# Compute TREE[node] representing subarray arr[a..b]
+
+	# If the node represents a single element
+	if a == b:
+		# ...
+		# Initialise value of TREE[node] for single element arr[a]
+		# ...
+		return
+
+	mid = (a+b)/2
+	left = node<<1
+	right = left+1
+	build(left, a, mid)
+	build(right, mid+1, b)
+	# ...
+	# merge the results of TREE[left] and TREE[right] into TREE[node]
+	# ...
+	return
+
+
+* QUERY - queries the TREE for any range. O(lg(n))
+
+- Psuedo Code
+
+# Start with query(1, 0, n-1, a, b)
+
+query(node, a, b, x, y):
+	# query for range (x, y) in subtree with root TREE[node] representing arr[a..b]
+	
+	# If TREE[node] represents a range which is a subset of the the query range	
+	if x<=a and y>=b:
+		return TREE[NODE]
+
+	mid = (a+b)/2
+	left = node<<1
+	right = left+1
+	
+	# if the query range is a subset of the range represented by the left child of TREE[node]
+	if y<=mid:
+		return query(left, a, mid, x, y)
+	
+	# if the query range is a subset of the range represented by the right child of TREE[node]
+	if x>mid:
+		return query(right, mid+1, b, x, y)
+	
+	# if the query range overlaps between the range represented by the left and right child of TREE[node]
+	left_query = query(left, a, mid, x, y)
+	right_query = query(right, mid+1, b, x, y)
+	
+	# ...
+	# Merge results of left_query and right_query into merged_result
+	# ...
+	
+	return merged_result
+
+
+* UPDATE - updates the tree based on a change on a particular element. O(lg(n))
+
+- Psuedo Code
+
+# update(1, 0, n-1, a)
+
+update(node, a, b, x):
+	# Updates TREE[node] which represents arr[a..b] due to a change in arr[x]
+	
+	if a == b:
+		# ...
+		# Perform changes on TREE[node] which represents the single element arr[x]
+		# ...
+		return
+	
+	mid = (a+b)/2
+	left = node<<1
+	right = node+1
+	
+	if x <= mid:
+		update(left, a, mid, x)
+	else
+		update(right, mid+1, b, x)
+	
+	# ...
+	# Merge results of TREE[left] and TREE[right] into TREE[node]
+	# ...
+	
+	return
+
+
+* Lazy Propagation
+Reduces constant for update complexity
+Instead of updating every child, a suitable top level interval completely containing the update interval is updated and marked to carry over the update to the children later.
+The child is later updated during query. Advantage offered in this technique is that only those low level nodes are updated which are queried.

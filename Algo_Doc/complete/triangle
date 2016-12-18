@@ -1,0 +1,17 @@
+R -> circumradius
+r = inradius
+r1, r2, r3 = exradius
+* sine rule
+sinA/a = sinB/b = sinC/c = 1/2R = 2(area)/abc
+* cosine rule
+cosA = (b^2+c^2-a^2)/2bc
+..
+* sin(A/2) = sqrt((s-b)(s-c)/bc)
+  cos(A/2) = sqrt(s(s-a)/bc)
+* a = bcosC+ccosB
+* r = area/s
+* 2r<=R
+* r1+r2+r3 = 4R+r
+  r1 = area/(s-a) = stan(A/2) = 4Rsin(A/2)cos(B/2)cos(C/2)
+  r1r2+r2r3+r3r1 = s^2 = r1r2r3/r
+* r+2R = s in right traingle

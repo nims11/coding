@@ -1,0 +1,11 @@
+*
+!*/
+!.gitignore
+!*.cpp
+!*.c
+!*.py
+!*.java
+!*.hs
+!*.snippets
+!Algos/**/*
+!Algo_Doc/**/*

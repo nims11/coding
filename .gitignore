@@ -2,6 +2,7 @@
 !*/
 !.gitignore
 !*.cpp
+!*.cc
 !*.c
 !*.py
 !*.java
